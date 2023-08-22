@@ -3,6 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { dbConnectMysql } from './config/mysql.js';
 import productsRoutes from './routes/products.js'
+import cors from 'cors'
 
 //config && initialization
 dotenv.config()
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 //middlewares
+app.use(cors())
 app.use(express.json())
 app.use(express.static(`./src/storage`));//i can
 

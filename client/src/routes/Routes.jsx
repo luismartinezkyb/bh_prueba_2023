@@ -8,7 +8,6 @@ import Error404 from "../components/errors/Error404";
 //partials
 import Navbar from "../components/partials/NavBar";
 //pages
-import Dashboard from "../pages/Dashboard";
 import ProductDetail from "../pages/products/ProductDetail";
 import Products from "../pages/products/Products";
 

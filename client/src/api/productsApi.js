@@ -1,8 +1,8 @@
 import axios from "axios";
-const URL_API = import.meta.VITE_URL_API;
+const VITE_URL_API = import.meta.env.VITE_URL_API;
 
 const productsApi = axios.create({
-    baseURL: `${URL_API}/api/products`
+    baseURL: `${VITE_URL_API}/api/products`
 })
 
 export const getProducts = async()=>{
