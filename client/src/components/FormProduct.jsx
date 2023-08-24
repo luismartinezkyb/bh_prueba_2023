@@ -171,7 +171,7 @@ function FormProduct({loading, onSubmit, type, product, categories, handleImage}
                                 {errors.image?.type === 'validate' && <p className={`${styles.pError} mb-6`}>{errors.image?.message}</p>}
                         </div>
                         {
-                        product.image.length!==0&&
+                        product.image&&
                         
                         (<div className="">
                             <label htmlFor="none" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Imagen Actual</label>
