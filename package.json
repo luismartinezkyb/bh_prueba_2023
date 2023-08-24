@@ -4,8 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm run --prefix client dev",
+    "server": "npm start -w server",
+    "install-server": "npm i server",
+    "install-client": "npm i --prefix client"
   },
+  "workspaces": [
+    "server",
+    "client"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC"
