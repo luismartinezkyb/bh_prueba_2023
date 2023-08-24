@@ -158,5 +158,19 @@ const deleteProduct = async(req, res)=>{
     }
 }
 
+const getCategories = async(req, res)=>{
+    try {
+        const data = await CategoriesModel.findAll({});
+        if(!data){
+            return handleHttpError(res, 'Categories not found', 401);
+        }
+        res.status(200).json(data);
+    } catch (error) {
+        console.log("GET ALL CATEGORIES",error)
+        handleHttpError(res, 'Something went wront with get Categories', 401)
+        return;
+    }
+}
 
-export {getAllProducts, getProduct, updateProduct, deleteProduct,createProduct}
+
+export {getAllProducts, getProduct, updateProduct, deleteProduct,createProduct, getCategories}

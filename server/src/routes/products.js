@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllProducts, getProduct, createProduct, updateProduct, deleteProduct } from "../controllers/products.js";
+import { getCategories, getAllProducts, getProduct, createProduct, updateProduct, deleteProduct } from "../controllers/products.js";
 import {
     validatorGetProduct,
     validatorCreate,
@@ -14,7 +14,7 @@ router.get('/one/:product_id', validatorGetProduct, getProduct);
 router.post('/create/', uploadMiddleware.single('image'), validatorCreate, createProduct);
 router.put('/update/:product_id', uploadMiddleware.single('image'), validatorUpdateProduct, updateProduct);
 router.delete('/delete/:product_id', validatorDeleteProduct, deleteProduct);
-// router.get('/all/', getAllProducts);
+router.get('/categories/all', getCategories);
 
 export default router;
 

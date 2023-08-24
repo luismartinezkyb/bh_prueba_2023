@@ -13,24 +13,28 @@ export const getProducts = async()=>{
 
 export const getProduct = async(product_id)=>{
     const res = await productsApi.get(`/one/${product_id}`);
-    console.log(res)
     return res;
 }
 
 export const createProduct = async(product)=>{
+    console.log("PRODUCT", product)
     const res = await productsApi.post('/create', product);
-    console.log(res);
     return res;
 }
 
-export const updateProduct = async(product)=>{
-    const res = await productsApi.put(`/update/${product.product_id}`, product);
-    console.log(res)
+export const updateProduct = async(product, product_id)=>{
+    console.log("PRODUCTO A ENVIAR",product)
+    const res = await productsApi.put(`/update/${product_id}`, product);
     return res;
 }
 
 export const deleteProduct = async(product_id)=>{
     const res = await productsApi.delete(`/delete/${product_id}`);
-    console.log(res);
+    return res;
+}
+
+
+export const getCategories = async()=>{
+    const res = await productsApi.get(`/categories/all/`);
     return res;
 }

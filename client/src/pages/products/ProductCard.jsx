@@ -1,11 +1,29 @@
+import { Button } from '@material-tailwind/react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { LuEdit, LuTrash } from "react-icons/lu";
 
-function Product({product}) {
-    const VITE_URL_API = import.meta.env.VITE_URL_API;
+function ProductCard({product, handleDelete}) {
+    const VITE_URL_API = import.meta.env.VITE_URL_API; 
+
+
+    
+
     //https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg
     return (
       <div className="group relative border px-2 shadow-xl pb-3">
+        <button className='absolute left-0 p-3 z-40 group/delete' onClick={()=>handleDelete(product.product_id)}>
+            
+            <LuTrash strokeWidth={2} className={`h-4 w-4 hover:text-red-500`} />
+        </button>
+        
+        
+        
+        <Link className='absolute right-0 p-3 z-50' to={`/products/${product.product_id}/edit`}>
+        
+        <LuEdit strokeWidth={2} className={`h-4 w-4 hover:text-blue-500`} />
+        
+        </Link>
           <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
             <img src={`${VITE_URL_API}/${product.image}`} alt={product.name} className="h-full w-full object-cover object-center lg:h-full lg:w-full"/>
           </div>
@@ -17,7 +35,7 @@ function Product({product}) {
                     <span className={`animate-ping absolute h-full w-full rounded-full ${product.in_stock?'bg-green-400':'bg-red-400'} opacity-75`}></span>
                     <span className={`relative rounded-full h-3 w-3 ${product.in_stock?'bg-green-500':'bg-red-500'}`}></span>
                 </span>
-                <Link to={`/products/${product.product_id}`}>
+                <Link to={`/products/${product.product_id}/details`}>
                     <h3 className="text-md text-gray-700 font-bold hover:text-blue-500">
                         <span aria-hidden="true" className="absolute inset-0"></span>
                             {product.name}
@@ -36,13 +54,15 @@ function Product({product}) {
                     product.discount!=0 && <p className='text-sm text-gray-300'>-<span className="text-sm text-gray-300 line-through">{product.discount}</span>%</p>
                 }
             </div>
+            
         </div>
         
-      </div>
+    </div>
     )
 }
 
-Product.propTypes = {
-    product: PropTypes.object.isRequired
+ProductCard.propTypes = {
+    product: PropTypes.object.isRequired,
+    handleDelete: PropTypes.func.isRequired,
 };
-export default Product;
+export default ProductCard;
